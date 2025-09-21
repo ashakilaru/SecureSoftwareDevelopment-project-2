@@ -1,0 +1,17 @@
+<input id="command">
+<button id="run">Run</button>
+<script>
+const handlers = {
+    sayHello: () => alert('Hello!'),
+    getTime: () => alert(new Date().toISOString())
+};
+
+document.getElementById('run').addEventListener('click', () => {
+    const cmd = document.getElementById('command').value;
+    if(handlers.hasOwnProperty(cmd)) {
+        handlers[cmd]();
+    } else {
+        alert('Invalid command');
+    }
+});
+</script>
