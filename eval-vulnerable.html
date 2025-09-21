@@ -1,0 +1,13 @@
+<input id="expr">
+<button id="run">Run</button>
+<script>
+document.getElementById('run').addEventListener('click', () => {
+  const code = document.getElementById('expr').value;
+  try {
+    const result = eval(code); // VULNERABLE
+    console.log(result);
+  } catch(e) {
+    console.error(e);
+  }
+});
+</script>
