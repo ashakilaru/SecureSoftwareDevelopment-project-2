@@ -1,0 +1,25 @@
+Content-Security-Policy:
+  default-src 'none';
+  script-src 'self' 'nonce-<RANDOM_NONCE>';
+  connect-src 'self';
+  img-src 'self' data:;
+  style-src 'self' 'unsafe-inline';
+  object-src 'none';
+  base-uri 'self';
+  frame-ancestors 'none';
+
+
+
+app.use((req, res, next) => {
+  const nonce = crypto.randomBytes(16).toString('base64');
+  res.setHeader("Content-Security-Policy", `script-src 'self' 'nonce-${nonce}'; object-src 'none';`);
+  res.locals.cspNonce = nonce; // pass the nonce to templates
+  next();
+});
+
+
+
+
+<script nonce="{{cspNonce}}">
+
+</script>
