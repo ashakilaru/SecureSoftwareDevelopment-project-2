@@ -1,0 +1,8 @@
+<div id="welcome"></div>
+<script>
+const name = new URLSearchParams(location.search).get('name') || 'Guest';
+const wrapper = document.getElementById('welcome');
+const title = document.createElement('h1');
+title.textContent = `Welcome, ${name}`; // SAFE
+wrapper.appendChild(title);
+</script>
