@@ -1,0 +1,24 @@
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+app.get('/search', (req, res) => {
+  const query = escapeHtml(req.query.q || '');
+  res.send(`
+    <html>
+      <body>
+        <form method="GET" action="/search">
+          <input name="q" value="${query}">
+        </form>
+        <div id="results">
+          Showing results for: ${query}
+        </div>
+      </body>
+    </html>
+  `);
+});
