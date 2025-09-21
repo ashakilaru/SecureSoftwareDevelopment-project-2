@@ -1,0 +1,9 @@
+<html>
+  <body>
+    <div id="target"></div>
+    <script>
+      const msg = decodeURIComponent(location.hash.substring(1));
+      document.getElementById('target').innerHTML = msg;
+    </script>
+  </body>
+</html>
