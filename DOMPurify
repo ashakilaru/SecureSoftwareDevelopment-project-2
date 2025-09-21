@@ -1,0 +1,5 @@
+const cleanHtml = DOMPurify.sanitize(userHtml, {
+  ALLOWED_TAGS: ['b', 'i', 'u', 'a', 'p', 'ul', 'li', 'br'],
+  ALLOWED_ATTR: ['href', 'title']
+});
+container.innerHTML = cleanHtml;
