@@ -1,0 +1,7 @@
+app.use(cookieSession({
+  name: 'session',
+  secret: 'some secret',
+  httpOnly: true,      // prevents JS access
+  secure: true,        // requires HTTPS
+  sameSite: 'Lax'
+}));
